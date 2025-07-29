@@ -3,15 +3,15 @@
 require_relative 'lib/germ/version'
 
 Gem::Specification.new do |spec|
-  spec.add_dependency 'factory_bot'
-  spec.add_dependency 'faker'
+  spec.add_dependency 'factory_bot', '~> 6.4'
+  spec.add_dependency 'faker', '~> 3.2'
   spec.add_dependency 'rails', '~> 8.0'
 
   spec.authors                           = ['Martin Streicher']
-  spec.bindir                            = 'exe'
-  spec.description                       = 'An object-oriented approach to seed files.'
+  spec.bindir                            = 'bin'
+  spec.description                       = 'Germ provides an object-oriented approach to Rails seed files, making them more maintainable and testable by organizing seed data into classes with clear responsibilities.'
   spec.email                             = ['martin@getbridgecare.com']
-  spec.executables                       = spec.files.grep(%r{\Aexe/}) { |f| File.basename(f) }
+  spec.executables                       = spec.files.grep(%r{\Abin/}) { |f| File.basename(f) }
   spec.homepage                          = 'https://github.com/martinstreicher/germ'
   spec.license                           = 'MIT'
   spec.metadata['changelog_uri']         = 'https://github.com/martinstreicher/germ/blob/main/CHANGELOG.md'
@@ -31,7 +31,8 @@ Gem::Specification.new do |spec|
     IO.popen(%w[git ls-files -z], chdir: __dir__, err: IO::NULL) do |ls|
       ls.readlines("\x0", chomp: true).reject do |f|
         (f == gemspec) ||
-          f.start_with?(*%w[bin/ test/ spec/ features/ .git .github appveyor Gemfile])
+          f.start_with?(*%w[spec/ features/ .git .github appveyor Gemfile]) ||
+          f.end_with?('.gem')
       end
     end
 
