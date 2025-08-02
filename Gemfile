@@ -6,6 +6,7 @@ source 'https://rubygems.org'
 gemspec
 
 gem 'debug'
+gem 'memo_wise', '~> 1.13'
 gem 'rails', '~> 8.0'
 gem 'rake', '~> 13.0'
 gem 'rspec', '~> 3.0'

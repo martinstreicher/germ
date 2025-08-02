@@ -5,7 +5,6 @@ module Germ
     include FactoryBot::Syntax::Methods
 
     def self.included(base)
-      debugger
       Internals.register(name: base.name, seed: self)
     end
   end

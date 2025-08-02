@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+require_relative 'germ/base'
 require_relative 'germ/internals'
 require_relative 'germ/seed'
 require_relative 'germ/version'
